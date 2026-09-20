@@ -26,6 +26,23 @@ body { margin: 0; background: var(--night-deep); color: var(--ivory); font-famil
   background: url("assets/starry-celebration.png") center / cover no-repeat;
   transform: scale(1.03);
 }
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 22%, rgba(255, 246, 223, .92) 0 1px, transparent 2px),
+    radial-gradient(circle at 26% 67%, rgba(232, 189, 101, .8) 0 1px, transparent 2px),
+    radial-gradient(circle at 44% 14%, rgba(255, 246, 223, .85) 0 1px, transparent 2px),
+    radial-gradient(circle at 68% 38%, rgba(232, 189, 101, .78) 0 1px, transparent 2px),
+    radial-gradient(circle at 83% 73%, rgba(255, 246, 223, .9) 0 1px, transparent 2px),
+    radial-gradient(circle at 91% 18%, rgba(232, 189, 101, .72) 0 1px, transparent 2px);
+  opacity: .25;
+  will-change: opacity;
+  animation: starlight 4.8s ease-in-out infinite alternate;
+}
 .hero::after, .closing::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(3,10,27,.58), rgba(3,10,27,.08) 48%, rgba(3,10,27,.42)), linear-gradient(0deg, rgba(3,10,27,.72), transparent 45%, rgba(3,10,27,.18)); }
 
 .hero-content { text-align: center; padding: 4rem 1.5rem 7rem; max-width: 740px; }
@@ -61,5 +78,6 @@ h1 em, h2 em { color: var(--gold); font-weight: 500; }
 .reveal { opacity: 0; transform: translateY(18px); animation: reveal .9s cubic-bezier(.2,.8,.2,1) forwards; }
 .delay-1 { animation-delay: .13s; }.delay-2 { animation-delay: .24s; }.delay-3 { animation-delay: .36s; }.delay-4 { animation-delay: .48s; }.delay-5 { animation-delay: .72s; }
 @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+@keyframes starlight { to { opacity: .62; } }
 @media (max-width: 600px) { .hero { min-height: 680px; }.hero::after { background: linear-gradient(0deg, rgba(3,10,27,.72), transparent 52%, rgba(3,10,27,.28)); }.about-inner { grid-template-columns: 1fr; gap: 1.25rem; }.about-mark { text-align: left; }.about-copy p:not(.section-kicker) { font-size: 1rem; }.closing { min-height: 520px; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; } }
